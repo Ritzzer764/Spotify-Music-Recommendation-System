@@ -20,7 +20,7 @@ I found the optimal number of clusters for the given datset by the elbow method 
 
 ### Song clustering
 
-Clustering helps recognise patterns in the data. In order to do so, I decided to make use of a pipeline that consist of StandardScaler to normalise the data and K means to cluster the normalised data. Here is an example of how the code looks like.
+Clustering helps recognise patterns in the data. In order to do so, I decided to make use of a pipeline that consist of StandardScaler to normalize the data and K means to cluster the normalized data. Here is an example of how the code looks like.
 
 ```
 song_cluster_pipeline = Pipeline([('scaler', StandardScaler()), 
@@ -63,7 +63,18 @@ def recommend_artists(song_list, spotify_data, n_songs=10):
     return list(rec_artists['artists'])
 ```
 
-We first determine the mean value of all the features of the songs in the user’s playlist and then normalize the data using Standard scaler in the scaler pipeline. Next, we pass all songs/artists of the dataset to the scaler pipeline where we normalize the data using Standardscaler() and cluster songs using Kmeans. Finally, we compare the clustered data and the mean value of songs/artists which was normalized and obtain 10 songs/artist closest to this mean value of our playlist using cdist.
+I first determined the mean value of all the features of the songs in the user’s playlist and then normalize the data using Standard scaler in the scaler pipeline. Next, I passed all songs/artists of the dataset to the scaler pipeline where I normalized the data using Standardscaler() and cluster songs using Kmeans. Finally, I compared the clustered data and the mean value of songs/artists which was normalized and obtain 10 songs/artist closest to this mean value of the user's playlist using cdist.
+
+Hence, we get a personalised recommendation of songs and artists based on the user’s playlist of songs. But how does one tell if the classification is accurate. We find songs of similar genres are recommended with similar music features. 
+Here we see mainstream pop songs being recommended due to user’s input of pop songs 
+
+![Screenshot (121)](https://user-images.githubusercontent.com/114499776/209536976-c31e9671-fd44-4625-996d-a56a533dbcf7.png)
+
+Here we see primarily hip-hop/rap artists being recommended due to the user’s song choices
+
+![Screenshot (122)](https://user-images.githubusercontent.com/114499776/209536662-d4f51daf-da4b-418f-8dc7-f78e4f2b90dc.png)
+
+
 
 
 
