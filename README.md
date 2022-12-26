@@ -36,4 +36,37 @@ spotifydata['cluster_label'] = song_cluster_labels
 ```
 I used PCA to visualise the large and complex spotifydata in much more simpler 2D format with different distinct colours representing clusters of data points.
 
+![output](https://user-images.githubusercontent.com/114499776/209534567-a8c73725-27e2-46d7-b3fe-c1bb404c9284.png)
+
+### Artist clustering
+
+Similarly I clustered the artists together as shown and visualised it using plotly: 
+
+![newplot](https://user-images.githubusercontent.com/114499776/209534814-a237e1de-5be4-46c9-b6a8-70482c646ebe.png)
+
+## Spotify Recommendation System
+
+We can now recommend music that caters to each individuals unique music taste by analysing the features of the songs/artists from the user's playlist.
+The artist recommendation code is given below:
+
+```
+def recommend_artists(song_list, spotify_data, n_songs=10):
+    artist_columns =  ['acousticness', 'danceability', 'duration_ms', 'energy', 'instrumentalness', 'liveness',
+    'loudness', 'speechiness', 'tempo', 'valence', 'popularity', 'key']
+    song_center = get_mean_vector(song_list, spotify_data, artist_columns)
+    scaler = artist_cluster_pipeline.steps[0][1]
+    scaled_data = scaler.transform(artist_data[artist_columns])
+    scaled_song_center = scaler.transform(song_center.reshape(1, -1))
+    distances = cdist(scaled_song_center, scaled_data, 'cosine')
+    index = list(np.argsort(distances)[:, :n_songs][0])
+    rec_artists = artist_data.iloc[index]
+    return list(rec_artists['artists'])
+```
+
+We first determine the mean value of all the features of the songs in the user’s playlist and then normalize the data using Standard scaler in the scaler pipeline. Next, we pass all songs/artists of the dataset to the scaler pipeline where we normalize the data using Standardscaler() and cluster songs using Kmeans. Finally, we compare the clustered data and the mean value of songs/artists which was normalized and obtain 10 songs/artist closest to this mean value of our playlist using cdist.
+
+
+
+
+
 
