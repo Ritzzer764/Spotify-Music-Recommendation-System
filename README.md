@@ -10,3 +10,5 @@ This is a dataset which consists of songs in spotify from 1921 - 2020 and all fe
 
 ## Most Popular Songs each year (2000 - 2020)
 
+![newplot](https://user-images.githubusercontent.com/114499776/209531558-4172c28b-e7a9-480d-a260-081907f9548f.png)
+
