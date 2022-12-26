@@ -63,7 +63,7 @@ def recommend_artists(song_list, spotify_data, n_songs=10):
     return list(rec_artists['artists'])
 ```
 
-I first determined the mean value of all the features of the songs in the user’s playlist and then normalize the data using Standard scaler in the scaler pipeline. Next, I passed all songs/artists of the dataset to the scaler pipeline where I normalized the data using Standardscaler() and cluster songs using Kmeans. Finally, I compared the clustered data and the mean value of songs/artists which was normalized and obtain 10 songs/artist closest to this mean value of the user's playlist using cdist.
+I first determined the mean value of all the features of the songs in the user’s playlist and then normalized the data using Standard scaler in the scaler pipeline. Next, I passed all songs/artists of the dataset to the scaler pipeline where I normalized the data using Standardscaler() and cluster songs using Kmeans. Finally, I compared the clustered data and the mean value of songs/artists which was normalized and obtain 10 songs/artist closest to this mean value of the user's playlist using cdist.
 
 Hence, we get a personalised recommendation of songs and artists based on the user’s playlist of songs. But how does one tell if the classification is accurate. We find songs of similar genres are recommended with similar music features. 
 Here we see mainstream pop songs being recommended due to user’s input of pop songs 
