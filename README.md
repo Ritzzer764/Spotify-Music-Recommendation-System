@@ -1,1 +1,2 @@
 # Spotify Music Recommendation System
+Many users find it very difficult to find good and new music recommendations that cater to their taste. I built a system to recommend music according to a user’s playlist. What makes this model unique is that it recommends music placing emphasis on the features of the songs rather than just recommending songs of artists that they already listen to. This enables users to find and explore new music and artists catered to their taste.
